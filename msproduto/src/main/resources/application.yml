@@ -16,6 +16,11 @@ spring:
 server:
   port: 0
 
+flyway:
+  enabled: true
+  locations: classpath:db/migration
+  baseline-on-migrate: true
+
 eureka:
   client:
     service-url:

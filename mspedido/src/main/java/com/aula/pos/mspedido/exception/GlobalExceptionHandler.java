@@ -1,6 +1,6 @@
-package com.aula.pos.msproduto.exception;
+package com.aula.pos.mspedido.exception;
 
-import com.aula.pos.msproduto.dto.ResponseErrorDto;
+import com.aula.pos.mspedido.dto.ResponseErrorDto;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

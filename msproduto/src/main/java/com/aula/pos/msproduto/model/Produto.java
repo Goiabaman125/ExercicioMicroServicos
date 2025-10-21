@@ -1,14 +1,13 @@
 package com.aula.pos.msproduto.model;
 
-import com.aula.pos.msproduto.dto.PessoaDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "tb_produtos")
 public class Produto {
@@ -16,14 +15,26 @@ public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(length = 150)
+
+    @Column(length = 150, nullable = false)
     private String nome;
-    private String email;
-    private String cpf;
-    private String telefone;
 
-    public static Produto fromDto(PessoaDto pessoaDto){
-        return new Produto(pessoaDto.id(), pessoaDto.nome(), pessoaDto.email(), pessoaDto.cpf(), pessoaDto.telefone());
+    private int quantidade;
+
+    @Column(columnDefinition = "TEXT")
+    private String descricao;
+
+    private float preco;
+
+    /*  ---- opcional: só descomente depois que ProdutoDto existir ----
+    public static Produto fromDto(ProdutoDto dto) {
+        return new Produto(
+                dto.id(),
+                dto.nome(),
+                dto.quantidade(),
+                dto.descricao(),
+                dto.preco()
+        );
     }
-
+    */
 }

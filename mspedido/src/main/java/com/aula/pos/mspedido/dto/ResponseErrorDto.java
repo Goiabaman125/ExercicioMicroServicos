@@ -1,4 +1,4 @@
-package com.aula.pos.msproduto.dto;
+package com.aula.pos.mspedido.dto;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;

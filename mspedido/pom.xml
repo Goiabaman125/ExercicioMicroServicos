@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.aula.pos</groupId>
-	<artifactId>msproduto</artifactId>
+	<artifactId>mspedido</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>mspessoa</name>
 	<description>Microsserviço para Pessoa</description>
