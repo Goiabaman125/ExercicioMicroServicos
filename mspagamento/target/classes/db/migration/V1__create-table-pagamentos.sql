@@ -1,0 +1,8 @@
+CREATE TABLE tb_pagamentos (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    valor DECIMAL(10,2) NOT NULL,
+    codigo VARCHAR(255) NOT NULL UNIQUE,
+    expiracao DATETIME NOT NULL,
+    pedido_id BIGINT NOT NULL,
+    status VARCHAR(30) NOT NULL
+);
