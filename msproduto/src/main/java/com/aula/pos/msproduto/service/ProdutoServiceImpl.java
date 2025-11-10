@@ -11,6 +11,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class ProdutoServiceImpl implements ProdutoService {
@@ -63,4 +65,14 @@ public class ProdutoServiceImpl implements ProdutoService {
         }
         produtoRepository.deleteById(id);
     }
+
+    @Override
+    public List<ProdutoDto> findByIds(List<Long> ids) {
+        return produtoRepository.findAllById(ids)
+                .stream()
+                .map(ProdutoDto::new)
+                .collect(java.util.stream.Collectors.toList());
+    }
+
+
 }

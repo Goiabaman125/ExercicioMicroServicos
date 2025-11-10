@@ -20,8 +20,8 @@ public class PagamentoConsumo {
      */
     @RabbitListener(queues = "pagamento.queue")
     public void consumir(PagamentoRequestDto dto) {
-        log.info("► Pagamento recebido: {}", dto);
+        log.info("► Pagamento recebido: pedidoId={}, valorTotal={}", dto.getPedidoId(), dto.getValorTotal());
         service.processarPagamentoAsync(dto);
-        log.info("► Pagamento processado com sucesso");
+        log.info("► Pagamento processado com sucesso para pedido: {}", dto.getPedidoId());
     }
 }

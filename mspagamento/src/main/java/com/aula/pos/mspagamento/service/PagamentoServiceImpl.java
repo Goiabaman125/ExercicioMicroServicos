@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -36,8 +37,8 @@ public class PagamentoServiceImpl implements PagamentoService {
     @Override
     public PagamentoResponseDto registrarPagamento(PagamentoRequestDto dto) {
         Pagamento p = Pagamento.builder()
-                .valor(dto.valor())
-                .pedidoId(dto.pedidoId())
+                .valor(BigDecimal.valueOf(dto.getValorTotal()))
+                .pedidoId(dto.getPedidoId())
                 .codigo(UUID.randomUUID().toString())
                 .expiracao(LocalDateTime.now().plusHours(24))
                 .status(StatusPagamento.CRIADO)
@@ -50,14 +51,14 @@ public class PagamentoServiceImpl implements PagamentoService {
     @Override
     public void processarPagamentoAsync(PagamentoRequestDto dto) {
         Pagamento p = Pagamento.builder()
-                .valor(dto.valor())
-                .pedidoId(dto.pedidoId())
+                .valor(BigDecimal.valueOf(dto.getValorTotal()))
+                .pedidoId(dto.getPedidoId())
                 .codigo(UUID.randomUUID().toString())
                 .expiracao(LocalDateTime.now().plusHours(24))
                 .status(StatusPagamento.CONFIRMADO)   // regra do exercício
                 .build();
         repository.save(p);
-        pedidoCliente.notificarPagamentoConfirmado(dto.pedidoId(), p.getCodigo());
+        pedidoCliente.notificarPagamentoConfirmado(dto.getPedidoId(), p.getCodigo());
     }
 
     @Transactional

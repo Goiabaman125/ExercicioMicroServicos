@@ -1,13 +1,31 @@
 package com.aula.pos.mspagamento.dto;
 
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
-import java.math.BigDecimal;
+import java.io.Serializable;
 
-public record PagamentoRequestDto(
-        @NotNull
-        Long pedidoId,
+public class PagamentoRequestDto implements Serializable {
+    private Long pedidoId;
+    private Double valorTotal;
 
-        @NotNull @Positive
-        BigDecimal valor
-) {}
+    public PagamentoRequestDto() {}
+
+    public PagamentoRequestDto(Long pedidoId, Double valorTotal) {
+        this.pedidoId = pedidoId;
+        this.valorTotal = valorTotal;
+    }
+
+    public Long getPedidoId() {
+        return pedidoId;
+    }
+
+    public void setPedidoId(Long pedidoId) {
+        this.pedidoId = pedidoId;
+    }
+
+    public Double getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(Double valorTotal) {
+        this.valorTotal = valorTotal;
+    }
+}

@@ -12,6 +12,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/produtos")
 @RequiredArgsConstructor
@@ -44,5 +46,10 @@ public class ProdutoController {
     public ResponseEntity<Void> remover(@PathVariable Long id) {
         service.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/ids")
+    public ResponseEntity<List<ProdutoDto>> buscarProdutosPorIds(@RequestBody List<Long> ids) {
+        return ResponseEntity.ok(service.findByIds(ids));
     }
 }

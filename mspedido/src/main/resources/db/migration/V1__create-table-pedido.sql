@@ -1,9 +1,12 @@
 -- MySQL / MariaDB
 CREATE TABLE tb_pedidos (
-    id            BIGINT AUTO_INCREMENT PRIMARY KEY,
-    data_pedido   DATETIME(6) NOT NULL,
-    status        VARCHAR(20) NOT NULL
+                            id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                            data_pedido DATETIME NOT NULL,
+                            valor_total DOUBLE,
+                            id_produtos VARCHAR(255) NOT NULL,
+                            quantidade_produtos VARCHAR(255) NOT NULL
 );
+
 
 CREATE TABLE pedido_produtos (
     pedido_id  BIGINT NOT NULL,
